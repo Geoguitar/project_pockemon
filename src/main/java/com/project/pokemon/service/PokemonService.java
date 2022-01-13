@@ -1,5 +1,7 @@
 package com.project.pokemon.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,11 @@ public class PokemonService {
 
 		return listaRepository.save(lista);
 	}
+	
+	public List<Lista> listar() {
+
+		return listaRepository.findAll();
+	}
 
 	public Cep createLista(Cep cep) {
 
@@ -41,6 +48,5 @@ public class PokemonService {
 
 		return localizacaoRepository.save(localizacao);
 	}
-	
 	
 }
