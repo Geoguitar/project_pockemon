@@ -3,6 +3,7 @@ package com.project.pokemon.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.project.pokemon.entity.Cep;
@@ -37,6 +38,13 @@ public class PokemonService {
 	public List<Lista> listar() {
 
 		return listaRepository.findAll();
+	}
+	
+	public ResponseEntity<Lista> findListaById(Long id){
+		
+		return listaRepository.findById(id)
+				.map(taskLista -> ResponseEntity.ok().body(taskLista))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	public Cep createLista(Cep cep) {
