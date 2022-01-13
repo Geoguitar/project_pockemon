@@ -18,13 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.pokemon.entity.Lista;
 import com.project.pokemon.service.PokemonService;
 
-import lombok.Delegate;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @RequestMapping("/api/v1")
+@AllArgsConstructor
+@Slf4j
 public class PokemonController {
 	
-	@Autowired
+	
 	PokemonService listaService;
 	
 	
@@ -32,30 +36,35 @@ public class PokemonController {
 	@PostMapping("/listas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Lista createLista (@RequestBody Lista lista) {
+		log.info("Criando novo dado na Lista [{}]", lista);
 		return listaService.createLista(lista);
 	}
 	
 	@GetMapping("/listas")
 	@ResponseStatus(HttpStatus.OK)
 	public List<Lista> getAllLista() {
+		log.info("Listando os dados na Lista [{}]");
 		return listaService.listar();
 	}
 	
 	@GetMapping("/listas/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Lista> getListaById(@PathVariable (value = "id") Long id) {
+		log.info("Listando por ID os dados na Lista [{}]", id);
 		return listaService.findListaById(id);
 	}
 	
 	@PutMapping("/listas/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Lista> updateListaById(@PathVariable (value = "id") Long id, @RequestBody Lista lista) {
+		log.info("Atualizando por ID os dados na Lista [{}]", id, lista);
 		return listaService.updateListaById(lista, id);
 	}
 	
 	@DeleteMapping("/listas/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Object> deleteListaById(@PathVariable (value = "id") Long id) {
+		log.info("Apagando por ID os dados na Lista [{}]", id);
 		return listaService.deleteById(id);
 	}
 
