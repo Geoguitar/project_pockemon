@@ -1,6 +1,5 @@
 package com.project.pokemon.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
