@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.project.pokemon.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,3 +27,15 @@ public class PokemonController {
 	
 
 }
+=======
+package com.project.pokemon.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/")
+public class PokemonController {
+
+}
+>>>>>>> 99f8b2113612007cea0ee7aa090856cd3caeccc9
