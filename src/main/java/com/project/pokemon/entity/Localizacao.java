@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "tb_localizacao" )
 public class Localizacao {
@@ -22,50 +25,5 @@ public class Localizacao {
 	@ManyToOne
 	@JoinColumn(name = "cep_id")
 	private Cep cep_id;
-	
-	public Localizacao () {
-	}
-	
-	public Localizacao (String pokemon) {
-		super();
-		this.pokemon = pokemon;
-	}
-	
-	public Localizacao (String cep, String pokemon) {
-		super();
-		this.cep = cep;
-		this.pokemon = pokemon;
-	}
-	
-	public Localizacao (Long id, String cep, String pokemon) {
-		super();
-		this.id = id;
-		this.cep = cep;
-		this.pokemon = pokemon;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-	public String getPokemon() {
-		return pokemon;
-	}
-
-	public void setPokemon(String pokemon) {
-		this.pokemon = pokemon;
-	}
 	
 }

@@ -21,7 +21,8 @@ public class ProjectpokemonApiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Lista l1 = new Lista(null, "Bulbasaur");
+		//Lista l1 = new Lista(null, "Bulbasaur", null);
+		Lista l1 = new Lista();
 		listaRepository.save(l1);
 	}
 	
