@@ -50,14 +50,24 @@ public class PokemonService {
 	public ResponseEntity<Lista> updateListaById (Lista lista, Long id) {
 		
 		return listaRepository.findById(id)
-				.map(taskUpadateLista -> {
-					taskUpadateLista.setNome(lista.getNome());
-					Lista atualizada = listaRepository.save(taskUpadateLista);
+				.map(taskUpadate -> {
+					taskUpadate.setNome(lista.getNome());
+					Lista atualizada = listaRepository.save(taskUpadate);
 					return ResponseEntity.ok().body(atualizada);
 				}).orElse(ResponseEntity.notFound().build());
 	}
 	
 
+	public ResponseEntity<Object> deleteById(Long id) {
+		return listaRepository.findById(id)
+				.map(taskDelete -> {
+					listaRepository.deleteById(id);
+					return ResponseEntity.noContent().build();
+				}).orElse(ResponseEntity.notFound().build());
+	}
+	
+	
+	
 	public Cep createLista(Cep cep) {
 
 		return cepRepository.save(cep);
