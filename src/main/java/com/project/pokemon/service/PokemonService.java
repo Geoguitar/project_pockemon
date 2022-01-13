@@ -40,12 +40,23 @@ public class PokemonService {
 		return listaRepository.findAll();
 	}
 	
-	public ResponseEntity<Lista> findListaById(Long id){
+	public ResponseEntity<Lista> findListaById(Long id) {
 		
 		return listaRepository.findById(id)
 				.map(taskLista -> ResponseEntity.ok().body(taskLista))
 				.orElse(ResponseEntity.notFound().build());
 	}
+	
+	public ResponseEntity<Lista> updateListaById (Lista lista, Long id) {
+		
+		return listaRepository.findById(id)
+				.map(taskUpadateLista -> {
+					taskUpadateLista.setNome(lista.getNome());
+					Lista atualizada = listaRepository.save(taskUpadateLista);
+					return ResponseEntity.ok().body(atualizada);
+				}).orElse(ResponseEntity.notFound().build());
+	}
+	
 
 	public Cep createLista(Cep cep) {
 

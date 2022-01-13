@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -41,6 +42,12 @@ public class PokemonController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Lista> getListaById(@PathVariable (value = "id") Long id) {
 		return listaService.findListaById(id);
+	}
+	
+	@PutMapping("/listas/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Lista> getListaById(@PathVariable (value = "id") Long id, @RequestBody Lista lista) {
+		return listaService.updateListaById(lista, id);
 	}
 
 }
