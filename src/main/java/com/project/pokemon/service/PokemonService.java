@@ -13,13 +13,13 @@ import com.project.pokemon.repository.CepRepository;
 import com.project.pokemon.repository.ListaRepository;
 import com.project.pokemon.repository.LocalizacaoRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PokemonService {
 	
-	@Autowired
+
 	private ListaRepository listaRepository;
 	
 	@Autowired
