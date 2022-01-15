@@ -47,6 +47,14 @@ public class CepService {
 				
 	}
 	
+	public ResponseEntity<Object> deleteById (Long id){
+		
+		return cepRepository.findById(id)
+				.map(taskDelete ->{
+					cepRepository.deleteById(id);
+					return ResponseEntity.noContent().build();
+				}).orElse(ResponseEntity.notFound().build());
+	}
 	
 }
 

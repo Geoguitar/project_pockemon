@@ -43,7 +43,14 @@ public class LocalizacaoService {
 		}).orElse(ResponseEntity.notFound().build());
 	}
 	
-	
+	public ResponseEntity<Object> deleteById (Long id){
+		
+		return localizacaoRepository.findById(id)
+				.map(taskDelete -> {
+					localizacaoRepository.deleteById(id);
+					return ResponseEntity.noContent().build();
+				}).orElse(ResponseEntity.notFound().build());
+	}
 	
 }
 
