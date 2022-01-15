@@ -1,34 +1,17 @@
 package com.project.pokemon.service;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.project.pokemon.entity.Cep;
 import com.project.pokemon.entity.Lista;
-import com.project.pokemon.entity.Localizacao;
-import com.project.pokemon.repository.CepRepository;
 import com.project.pokemon.repository.ListaRepository;
-import com.project.pokemon.repository.LocalizacaoRepository;
-
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class PokemonService {
+public class ListaService {
 	
-
 	private ListaRepository listaRepository;
-	
-	@Autowired
-	private LocalizacaoRepository localizacaoRepository;
-	
-	@Autowired
-	private CepRepository cepRepository;
-	
-	
 	
 	public Lista createLista(Lista lista) {
 
@@ -56,7 +39,6 @@ public class PokemonService {
 					return ResponseEntity.ok().body(atualizada);
 				}).orElse(ResponseEntity.notFound().build());
 	}
-	
 
 	public ResponseEntity<Object> deleteById(Long id) {
 		return listaRepository.findById(id)
@@ -65,17 +47,4 @@ public class PokemonService {
 					return ResponseEntity.noContent().build();
 				}).orElse(ResponseEntity.notFound().build());
 	}
-	
-	
-	
-	public Cep createLista(Cep cep) {
-
-		return cepRepository.save(cep);
-	}
-
-	public Localizacao createLocalizacao(Localizacao localizacao) {
-
-		return localizacaoRepository.save(localizacao);
-	}
-	
 }
