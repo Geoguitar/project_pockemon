@@ -1,5 +1,6 @@
 package com.project.pokemon.service;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import com.project.pokemon.entity.Cep;
 import com.project.pokemon.repository.CepRepository;
@@ -14,6 +15,11 @@ public class CepService {
 	public Cep createCep(Cep cep) {
 
 		return cepRepository.save(cep);
+	}
+	
+	public List<Cep> listarCep(){
+		
+		return cepRepository.findAll();
 	}
 
 }
