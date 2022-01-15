@@ -3,7 +3,9 @@ package com.project.pokemon.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +39,34 @@ public class CepController {
 		log.info("Listando os dados de CEP [{}]");
 		return cepService.listarCep();
 	}
+	
+	@GetMapping("/cep/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Cep> getCepById(@PathVariable (value = "id") Long id) {
+		log.info("Listando por ID os dados de CEP [{}]", id);
+		return cepService.findCepById(id);
+	}
+	
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
