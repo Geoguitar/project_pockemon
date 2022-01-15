@@ -31,4 +31,28 @@ public class LocalizacaoService {
 				.map(taskLocalizacao -> ResponseEntity.ok().body(taskLocalizacao))
 				.orElse(ResponseEntity.notFound().build());
 	}
+	
+	public ResponseEntity<Localizacao> updateLocalizacaoById (Localizacao localizacao, Long id){
+		
+		return localizacaoRepository.findById(id)
+		.map(taskUpdate ->{
+			taskUpdate.setPokemon(localizacao.getPokemon());
+			taskUpdate.setCep(localizacao.getCep());
+			Localizacao updated = localizacaoRepository.save(taskUpdate);
+			return ResponseEntity.ok().body(updated);			
+		}).orElse(ResponseEntity.notFound().build());
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+

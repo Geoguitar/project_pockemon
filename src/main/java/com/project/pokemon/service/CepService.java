@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import com.project.pokemon.entity.Cep;
 import com.project.pokemon.repository.CepRepository;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -30,4 +32,30 @@ public class CepService {
 				.map(taskCep -> ResponseEntity.ok().body(taskCep))
 				.orElse(ResponseEntity.notFound().build());
 	}
+	
+	public ResponseEntity<Cep> updateCepById (Cep cep, Long id){
+		
+		return cepRepository.findById(id)
+				.map(taskUpdate ->{
+					taskUpdate.setLogradouro(cep.getLogradouro());
+					taskUpdate.setBairro(cep.getBairro());
+					taskUpdate.setCidade(cep.getCidade());
+					taskUpdate.setCep(cep.getCep());
+					Cep updated = cepRepository.save(taskUpdate);
+					return ResponseEntity.ok().body(updated);			
+				}).orElse(ResponseEntity.notFound().build());
+				
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+

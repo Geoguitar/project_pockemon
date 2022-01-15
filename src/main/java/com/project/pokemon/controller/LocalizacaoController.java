@@ -45,7 +45,14 @@ public class LocalizacaoController {
 	public ResponseEntity<Localizacao> getLocalizacaoById(@PathVariable (value = "id") Long id){
 		log.info("Listando por ID os dados de Localização [{}], id");
 		return localizacaoService.findLocalizacaoById(id);
-	}	
+	}
+	
+	public ResponseEntity<Localizacao> updateLocalizacaoById (@PathVariable (value = "id") Long id, 
+			@RequestBody Localizacao localizacao){
+			return localizacaoService.updateLocalizacaoById(localizacao, id);
+					
+		
+	}
 }
 
 
